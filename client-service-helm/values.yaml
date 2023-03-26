@@ -4,22 +4,19 @@
 env: ""
 environments: []
 replicaCount: 1
+namespace: uat-ha-client
+containerPort: 8761
 
 image:
   repository: 180452140924.dkr.ecr.ap-east-1.amazonaws.com/uat-ha
   tag: "client-server-1"
   pullPolicy: IfNotPresent
 
-cloudSQLProxy:
-  enabled: true
-  instance_no: "2"
-  resources: {}
 
 serviceAccount:
   create: true
 
 service:
-  name: client-service
   type: ClusterIP
   port: 80
 

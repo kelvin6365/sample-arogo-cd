@@ -1,7 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: client-service 
+  name: {{ .Chart.Name }} 
+  namespace: {{ .Values.namespace }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
@@ -9,18 +10,11 @@ spec:
   revisionHistoryLimit: 5 
   selector:
     matchLabels:
-      app: client-service     
+      run: {{ .Chart.Name }}       
   template:
     metadata:     
-      annotations:
-      {{- if .Values.cloudSQLProxy.enabled }}      
-        proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
-      {{- end }}  
-       {{- with .Values.podAnnotations }}
-        {{- toYaml . | nindent 8 }}
-      {{- end }} 
       labels:
-        app: client-service      
+        run: {{ .Chart.Name }}     
     spec:    
       serviceAccountName: {{ include "api.serviceAccountName" . }}      
       containers:
@@ -33,7 +27,7 @@ spec:
 
           ports:
             - name: http
-              containerPort: 8863
+              containerPort: {{ .Values.containerPort }}
               protocol: TCP  
           {{- if .Values.mountSecrets }}
           volumeMounts:

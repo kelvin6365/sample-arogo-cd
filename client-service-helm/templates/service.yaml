@@ -1,15 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "api.fullname" . }}
+  name: {{ .Chart.Name }}
+  namespace: {{ .Values.namespace }}
   labels:
-    {{- include "api.labels" . | nindent 4 }}
+    run: {{ .Chart.Name }}
 spec:
   type: {{ .Values.service.type }}
   ports:
-    - port: {{ .Values.service.port }}
-      targetPort: http
-      protocol: TCP
-      name: {{ printf "http-%s-port" (include "api.fullname" .) | trunc 15 | trimSuffix "-" }}
+  - port: {{ .Values.service.port }}
+    targetPort: {{ .Values.containerPort }}
   selector:
-    {{- include "api.selectorLabels" . | nindent 4 }}
+    run: {{ .Chart.Name }}
