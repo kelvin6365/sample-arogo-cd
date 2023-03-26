@@ -27,7 +27,9 @@ spec:
           {{- end }}     
           #TODO 
           ports:
-          - containerPort: {{ .Values.containerPort }}
+            - name: http
+              containerPort: {{ .Values.containerPort }}
+              protocol: TCP  
           {{- if .Values.mountSecrets }}
           volumeMounts:
             - name: config-data
