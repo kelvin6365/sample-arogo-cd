@@ -3,5 +3,5 @@ kind: ConfigMap
 metadata:
   name: {{ include "api.fullname" . }}
 data:
-  EUREKA_DEFAULT_ZONE: http://uat-eureka-eureka-service.uat-ha-eureka.svc.cluster.local
+  EUREKA_DEFAULT_ZONE: http://eureka-service.uat-ha-eureka.svc.cluster.local
 
