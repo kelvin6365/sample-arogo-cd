@@ -34,7 +34,7 @@ spec:
           #TODO 
           ports:
             - name: http
-              containerPort: 8761
+              containerPort: {{ .Values.service.port }}
               protocol: TCP  
           {{- if .Values.mountSecrets }}
           volumeMounts:

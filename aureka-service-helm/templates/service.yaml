@@ -8,7 +8,7 @@ spec:
   type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
-      targetPort: 8761
+      targetPort: {{ .Values.service.port }}
       protocol: TCP
       name: {{ printf "http-%s-port" (include "api.fullname" .) | trunc 15 | trimSuffix "-" }}
   selector:
