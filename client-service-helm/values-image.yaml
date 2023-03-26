@@ -1,4 +1,4 @@
 image:
     repository: 180452140924.dkr.ecr.ap-east-1.amazonaws.com/uat-ha
-    tag: client-server-1
+    tag: client-server-5
     pullPolicy: IfNotPresent
