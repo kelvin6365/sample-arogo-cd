@@ -1,5 +1,6 @@
 environments:
-
+  - name: ENV
+    value: uat
 
 mountSecrets: true
 fullnameOverride: "web-service"
