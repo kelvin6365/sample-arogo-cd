@@ -1,0 +1,65 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eureka-service 
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  revisionHistoryLimit: 5 
+  selector:
+    matchLabels:
+      app: eureka-service     
+  template:
+    metadata:     
+      annotations:
+      {{- if .Values.cloudSQLProxy.enabled }}      
+        proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
+      {{- end }}  
+       {{- with .Values.podAnnotations }}
+        {{- toYaml . | nindent 8 }}
+      {{- end }} 
+      labels:
+        app: eureka-service      
+    spec:    
+      serviceAccountName: {{ include "api.serviceAccountName" . }}      
+      containers:
+        - name: {{ .Chart.Name }}         
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}    
+          env:
+          {{- with .Values.environments }}
+          {{- toYaml . | nindent 12 }}
+          {{- end }}     
+          #TODO 
+          ports:
+            - name: http
+              containerPort: 8761
+              protocol: TCP  
+          {{- if .Values.mountSecrets }}
+          volumeMounts:
+            - name: config-data
+              mountPath: /data
+              readOnly: true
+          {{- end }}
+      {{- with .Values.initContainers }}
+      initContainers:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- if .Values.mountSecrets }}
+      volumes:
+        - name: config-data
+          emptyDir: {}
+      {{- end }}       

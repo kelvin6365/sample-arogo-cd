@@ -1,0 +1,4 @@
+image:
+    repository: 180452140924.dkr.ecr.ap-east-1.amazonaws.com/uat-ha
+    tag: eureka-1
+    pullPolicy: IfNotPresent
