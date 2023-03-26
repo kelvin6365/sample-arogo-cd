@@ -1,8 +1,5 @@
 environments:
-  - name: ENV
-    value: uat
-  - name: EUREKA_DEFAULT_ZONE
-    value: uat-eureka-eureka-service.uat-ha-eureka.svc.cluster.local:8761
+
 
 mountSecrets: true
 fullnameOverride: "web-service"
@@ -10,9 +7,11 @@ fullnameOverride: "web-service"
 initContainers:
   # - name: secrets
   #   image: gcr.io/google.com/cloudsdktool/cloud-sdk:326.0.0-alpine
-  #   env:
-  #     - name: DEPLOY_ENV
-  #       value: sandbox
+    env:
+      - name: ENV
+        value: uat
+      - name: EUREKA_DEFAULT_ZONE
+        value: uat-eureka-eureka-service.uat-ha-eureka.svc.cluster.local:8761
   #   #TODO better get from echo "export JWT_SECRET='$(gcloud secrets versions access latest --secret=jwt_secret --project=mine-darts-${DEPLOY_ENV})'" >> /data/secret_env.env;
   #   # command:
   #   #   - "/bin/bash"
