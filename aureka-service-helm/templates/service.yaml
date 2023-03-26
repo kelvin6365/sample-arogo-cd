@@ -4,11 +4,11 @@ metadata:
   name: {{ .Chart.Name }}
   namespace: {{ .Values.namespace }}
   labels:
-    {{- include "api.labels" . | nindent 4 }}
+    run: {{ .Chart.Name }}
 spec:
-  # type: {{ .Values.service.type }}
+  type: {{ .Values.service.type }}
   ports:
-    - port: {{ .Values.service.port }}
-      targetPort: {{ .Values.containerPort }}
+  - port: {{ .Values.service.port }}
+    targetPort: {{ .Values.containerPort }}
   selector:
-    app: {{ .Chart.Name }}
+    run: {{ .Chart.Name }}
