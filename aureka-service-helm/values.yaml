@@ -4,7 +4,7 @@
 env: ""
 environments: []
 replicaCount: 1
-namespace: "uat-ha-eureka"
+namespace: uat-ha-eureka
 
 image:
   repository: 180452140924.dkr.ecr.ap-east-1.amazonaws.com/uat-ha
