@@ -19,6 +19,7 @@ serviceAccount:
   create: true
 
 service:
+  name: eureka-service
   type: ClusterIP
   port: 80
 

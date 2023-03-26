@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: kong
+    nginx.org/client-max-body-size: "10M"
+  name: eureka-ingress
+spec:
+  rules:
+    - host: api.uat.ha.altech.hk
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ index .Values.service.name }}
+                port:
+                  number: {{ index .Values.service.port }}
