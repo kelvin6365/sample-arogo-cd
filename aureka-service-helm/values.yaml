@@ -5,6 +5,7 @@ env: ""
 environments: []
 replicaCount: 1
 namespace: uat-ha-eureka
+containerPort: 8761
 
 image:
   repository: 180452140924.dkr.ecr.ap-east-1.amazonaws.com/uat-ha
@@ -17,7 +18,7 @@ serviceAccount:
 
 service:
   type: ClusterIP
-  port: 8765
+  port: 80
 
 ingress:
   enabled: false
