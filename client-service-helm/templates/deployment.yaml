@@ -27,11 +27,9 @@ spec:
         - name: {{ .Chart.Name }}         
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}    
-          env:
-          {{- with .Values.environments }}
-          {{- toYaml . | nindent 12 }}
-          {{- end }}     
-          #TODO 
+           envFrom:
+            - configMapRef:
+                name: {{ include "api.fullname" . }}
           ports:
             - name: http
               containerPort: 8863
