@@ -10,11 +10,11 @@ spec:
   revisionHistoryLimit: 5 
   selector:
     matchLabels:
-      app: {{ .Chart.Name }}       
+      run: {{ .Chart.Name }}       
   template:
     metadata:    
       labels:
-        app: {{ .Chart.Name }}         
+        run: {{ .Chart.Name }}         
     spec:    
       serviceAccountName: {{ include "api.serviceAccountName" . }}      
       containers:
@@ -27,9 +27,7 @@ spec:
           {{- end }}     
           #TODO 
           ports:
-            - name: http
-              containerPort: {{ .Values.service.port }}
-              protocol: TCP  
+          - containerPort: {{ .Values.containerPort }}
           {{- if .Values.mountSecrets }}
           volumeMounts:
             - name: config-data
