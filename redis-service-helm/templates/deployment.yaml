@@ -12,13 +12,12 @@ spec:
   revisionHistoryLimit: 5 
   selector:
     matchLabels:
-      run: {{ .Chart.Name }}  
-      app.kubernetes.io/name: {{ .Chart.Name }}  
+      run: {{ .Chart.Name }}
   template:
     metadata:     
       labels:
         run: {{ .Chart.Name }}  
-        app.kubernetes.io/name: {{ .Chart.Name }}  
+        app.kubernetes.io/name: {{ .Chart.Name }}
     spec:    
       serviceAccountName: {{ include "api.serviceAccountName" . }}      
       containers:
