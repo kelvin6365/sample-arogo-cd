@@ -19,9 +19,11 @@ spec:
           app.kubernetes.io/name: argocd-repo-server
     - podSelector:
         matchLabels:
+          run: web-service
           app.kubernetes.io/name: web-service
     - podSelector:
         matchLabels:
+          run: client-service
           app.kubernetes.io/name: client-service
     ports:
     - protocol: TCP
