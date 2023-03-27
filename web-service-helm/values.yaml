@@ -11,12 +11,7 @@ image:
   repository: 180452140924.dkr.ecr.ap-east-1.amazonaws.com/uat-ha
   tag: "web-1"
   pullPolicy: IfNotPresent
-
-cloudSQLProxy:
-  enabled: true
-  instance_no: "2"
-  resources: {}
-
+  
 serviceAccount:
   create: true
 
