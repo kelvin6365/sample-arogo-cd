@@ -13,7 +13,7 @@ serviceAccount:
 
 service:
   type: ClusterIP
-  port: 6379
+  port: 80
 
 ingress:
   enabled: false
