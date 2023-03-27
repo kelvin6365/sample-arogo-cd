@@ -18,16 +18,16 @@ spec:
     spec:    
       serviceAccountName: {{ include "api.serviceAccountName" . }}      
       containers:
-          - name: {{ .Chart.Name }}         
-            image: redis:7.0.9-alpine
-            imagePullPolicy: Always
-            args:
-            - "--save"
-            - ""
-            - "--appendonly"
-            - "no"
-            env:
-            - name: ARGOCD_REDIS_SERVICE
+        - name: {{ .Chart.Name }}         
+          image: redis:7.0.9-alpine
+          imagePullPolicy: Always
+          args:
+          - "--save"
+          - ""
+          - "--appendonly"
+          - "no"
+          env:
+          - name: ARGOCD_REDIS_SERVICE
               value: ""
           ports:
             - name: http
