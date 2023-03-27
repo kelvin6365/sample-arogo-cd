@@ -4,6 +4,8 @@
 env: ""
 environments: []
 replicaCount: 1
+namespace: uat-ha-web
+containerPort: 80
 
 image:
   repository: 180452140924.dkr.ecr.ap-east-1.amazonaws.com/uat-ha
@@ -19,7 +21,6 @@ serviceAccount:
   create: true
 
 service:
-  name: web-service
   type: ClusterIP
   port: 80
 
