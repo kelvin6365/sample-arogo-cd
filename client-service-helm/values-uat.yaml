@@ -1,6 +1,9 @@
 environments:
   - name: ENV
     value: uat
+  - name: EUREKA_DEFAULT_ZONE
+    value: uat-eureka-eureka-service.uat-ha-eureka.svc.cluster.local:8761
+
 mountSecrets: true
 fullnameOverride: "client-service"
 
