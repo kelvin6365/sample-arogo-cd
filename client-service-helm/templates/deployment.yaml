@@ -10,7 +10,7 @@ spec:
   revisionHistoryLimit: 5 
   selector:
     matchLabels:
-      run: {{ .Chart.Name }}       
+      run: {{ .Chart.Name }}  
   template:
     metadata:     
       labels:
