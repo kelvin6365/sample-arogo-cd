@@ -27,7 +27,7 @@ spec:
           - "--appendonly"
           - "no"
           env:
-          - name: ARGOCD_REDIS_SERVICE
+            - name: ARGOCD_REDIS_SERVICE
               value: ""
           ports:
             - name: http
