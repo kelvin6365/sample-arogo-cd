@@ -19,7 +19,10 @@ spec:
           app.kubernetes.io/name: argocd-repo-server
     - podSelector:
         matchLabels:
-          app.kubernetes.io/name: argocd-application-controller
+          app.kubernetes.io/name: web-service
+    - podSelector:
+        matchLabels:
+          app.kubernetes.io/name: client-service
     ports:
     - protocol: TCP
       port: 6379
