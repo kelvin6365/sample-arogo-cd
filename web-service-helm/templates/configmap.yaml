@@ -6,6 +6,6 @@ data:
   EUREKA_DEFAULT_ZONE: http://eureka-service.uat-ha-eureka.svc.cluster.local/eureka/
   DATABASE_URL: jdbc:mysql://uat-ha-db.cpxnfotp32ui.ap-east-1.rds.amazonaws.com:3306/ha_local?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false
   CLIENT_SERVICE_URL: http://client-service.uat-ha-client.svc.cluster.local
-  REDIS_HOST: http://argocd-redis.argocd-redis.svc.cluster.local
+  REDIS_HOST: http://redis-service.uat-ha-redis.svc.cluster.local
 
 
