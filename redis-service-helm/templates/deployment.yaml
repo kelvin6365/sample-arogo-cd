@@ -20,7 +20,7 @@ spec:
       containers:
           - name: {{ .Chart.Name }}         
             image: redis:7.0.9-alpine
-            imagePullPolicy: {{ .Values.image.pullPolicy }}    
+            imagePullPolicy: Always
             args:
             - "--save"
             - ""
