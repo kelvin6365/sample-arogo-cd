@@ -12,15 +12,8 @@ spec:
       app: web-service     
   template:
     metadata:     
-      annotations:
-      {{- if .Values.cloudSQLProxy.enabled }}      
-        proxy.istio.io/config: '{ "holdApplicationUntilProxyStarts": true }'
-      {{- end }}  
-       {{- with .Values.podAnnotations }}
-        {{- toYaml . | nindent 8 }}
-      {{- end }} 
       labels:
-        app: web-service      
+        app: {{ .Chart.Name }}     
     spec:    
       serviceAccountName: {{ include "api.serviceAccountName" . }}      
       containers:
@@ -33,7 +26,7 @@ spec:
 
           ports:
             - name: http
-              containerPort: 9090
+              containerPort: {{ .Values.containerPort }}
               protocol: TCP  
           {{- if .Values.mountSecrets }}
           volumeMounts:
