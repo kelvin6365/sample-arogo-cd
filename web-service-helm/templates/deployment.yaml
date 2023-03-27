@@ -1,7 +1,8 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: web-service 
+  name: {{ .Chart.Name }} 
+  namespace: {{ .Values.namespace }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
@@ -9,11 +10,11 @@ spec:
   revisionHistoryLimit: 5 
   selector:
     matchLabels:
-      app: web-service     
+      run: {{ .Chart.Name }}  
   template:
     metadata:     
       labels:
-        app: {{ .Chart.Name }}     
+        run: {{ .Chart.Name }}  
     spec:    
       serviceAccountName: {{ include "api.serviceAccountName" . }}      
       containers:
