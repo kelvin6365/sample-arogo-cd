@@ -7,7 +7,7 @@ metadata:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/group.name: uat-ha-group
     kubernetes.io/ingress.class: alb
-  name: '{{ .Chart.Name }}-ingress'
+  name: '{{ .Chart.Name }}-http-ingress'
 spec:
   rules:
     - host: api.example.co
@@ -19,4 +19,4 @@ spec:
               service:
                 name: {{ .Chart.Name }} 
                 port:
-                  number: {{ index .Values.service.port }}
+                  name: http
