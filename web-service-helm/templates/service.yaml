@@ -10,5 +10,7 @@ spec:
   ports:
   - port: 443
     targetPort: {{ .Values.containerPort }}
+  - port: 80
+    targetPort: {{ .Values.containerPort }}
   selector:
     run: {{ .Chart.Name }}
