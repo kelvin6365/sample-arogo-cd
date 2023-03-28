@@ -11,10 +11,10 @@ spec:
   - name: http
     port: 80
     protocol: TCP
-    targetPort: {{ .Values.containerPort }}
+    targetPort: {{ .Values.service.port }}
   - name: https
     port: 443
     protocol: TCP
-    targetPort: {{ .Values.containerPort }}
+    targetPort: {{ .Values.service.port }}
   selector:
     run: {{ .Chart.Name }}
