@@ -22,4 +22,4 @@ spec:
               service:
                 name: {{ .Chart.Name }}  
                 port:
-                  number: {{ .Values.service.port }}
+                  name: http
