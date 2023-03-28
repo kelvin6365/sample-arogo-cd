@@ -6,7 +6,7 @@ metadata:
   labels:
     run: {{ .Chart.Name }}
 spec:
-  type: NodePort
+  type: LoadBalancer
   ports:
   - port: {{ .Values.service.port }}
     targetPort: {{ .Values.containerPort }}
