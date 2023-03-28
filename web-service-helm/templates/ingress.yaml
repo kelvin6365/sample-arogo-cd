@@ -5,7 +5,6 @@ metadata:
     alb.ingress.kubernetes.io/backend-protocol: HTTP
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":{{ index .Values.service.port }}}]'
     alb.ingress.kubernetes.io/scheme: internet-facing
-    alb.ingress.kubernetes.io/group.name: uat-ha-group
     kubernetes.io/ingress.class: alb
   name: '{{ .Chart.Name }}-http-ingress'
 spec:
