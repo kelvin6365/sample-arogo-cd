@@ -6,7 +6,10 @@ metadata:
     alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":{{ index .Values.service.port }}}]'
     alb.ingress.kubernetes.io/scheme: internet-facing
     kubernetes.io/ingress.class: alb
+  labels:
+    run: {{ .Chart.Name }}
   name: '{{ .Chart.Name }}-http-ingress'
+  namespace: uat-ha-web
 spec:
   rules:
     - host: api.example.co
