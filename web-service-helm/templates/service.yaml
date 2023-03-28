@@ -8,9 +8,8 @@ metadata:
 spec:
   type: LoadBalancer
   ports:
-  - port: 443
-    targetPort: {{ .Values.containerPort }}
   - port: 80
     targetPort: {{ .Values.containerPort }}
+    name: http
   selector:
     run: {{ .Chart.Name }}
